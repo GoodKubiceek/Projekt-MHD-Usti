@@ -1,6 +1,6 @@
 const CONFIG = {
 
-  wsUrl: "ws://localhost:3000",
+  wsUrl: "wss://usti-livemap-gkn.onrender.com",
 
   map: {
     center: [50.6597989, 14.0370983],
