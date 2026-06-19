@@ -103,11 +103,10 @@ const stops = [
 ];
 
 const stopIcon = L.icon({
-    iconUrl: './blob/main/Stop_ico.png',
+    iconUrl: 'https://raw.githubusercontent.com/GoodKubiceek/Projekt-MHD-Usti/main/Stop_Ico.png',
     iconSize: [24, 24],
     iconAnchor: [12, 12]
 });
-
 // =====================
 // CLUSTER
 // =====================
