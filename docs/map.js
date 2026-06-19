@@ -103,7 +103,7 @@ const stops = [
 ];
 
 const stopIcon = L.icon({
-    iconUrl: './Stop_ico.png',
+    iconUrl: '/blob/main/Stop_ico.png',
     iconSize: [24, 24],
     iconAnchor: [12, 12]
 });
