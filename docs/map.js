@@ -103,7 +103,7 @@ const stops = [
 ];
 
 const stopIcon = L.icon({
-    iconUrl: '../Stop_Ico.png',
+    iconUrl: 'https://github.com/GoodKubiceek/Projekt-MHD-Usti/blob/main/Stop_Ico.png',
     iconSize: [24, 24],
     iconAnchor: [12, 12]
 });
