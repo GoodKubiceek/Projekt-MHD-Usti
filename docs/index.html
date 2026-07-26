@@ -1,141 +1,243 @@
 <!DOCTYPE html>
 <html lang="cs">
 <head>
-    <meta charset="UTF-8">
+    <charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brněnská MHD výzva: Židenická trať</title>
+    <title>MHD Brno - Židenice | Informační portál</title>
     <style>
-        /* CSS Styly */
+        /* --- CSS STYLY --- */
         :root {
-            --primary-color: #d21c1c; /* Červená typická pro brněnskou MHD / tramvaje */
-            --secondary-color: #ffffff;
-            --bg-color: #f4f4f9;
-            --text-color: #333333;
+            --brno-red: #d21c1c;
+            --brno-blue: #0056b3;
+            --dark-bg: #1e1e1e;
+            --light-bg: #f8f9fa;
+            --text-main: #333333;
+            --card-bg: #ffffff;
         }
 
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            background-color: var(--light-bg);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
+            line-height: 1.6;
         }
 
-        .game-container {
-            background-color: var(--secondary-color);
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            max-width: 500px;
-            width: 100%;
+        header {
+            background-color: var(--brno-red);
+            color: white;
+            padding: 2rem 1rem;
             text-align: center;
         }
 
-        h1 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 10px;
+        header h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.2rem;
         }
 
-        .subtitle {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 25px;
-        }
-
-        .question-box {
+        header p {
+            margin: 0;
             font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--dark-bg);
+            color: white;
+            padding: 0.8rem;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: 600;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #ffcccc;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        section {
+            margin-bottom: 2.5rem;
+        }
+
+        h2 {
+            color: var(--brno-blue);
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            padding: 1.5rem;
+            border-top: 4px solid var(--brno-blue);
+        }
+
+        .card.red-border {
+            border-top-color: var(--brno-red);
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-bg);
+        }
+
+        .line-badge {
+            display: inline-block;
+            background-color: var(--brno-red);
+            color: white;
+            padding: 3px 8px;
+            border-radius: 4px;
             font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .options-container {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-
-        .btn-option {
-            background-color: #fff;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
-            padding: 12px;
-            border-radius: 6px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .btn-option:hover {
-            background-color: var(--primary-color);
-            color: #fff;
-        }
-
-        #result {
-            font-weight: bold;
-            margin-top: 15px;
-            min-height: 24px;
-        }
-
-        .score {
-            margin-top: 20px;
+            margin-right: 5px;
+            margin-bottom: 5px;
             font-size: 0.9rem;
-            color: #555;
+        }
+
+        .line-badge.trol {
+            background-color: #007bff; /* Modrá pro trolejbusy */
+        }
+
+        .line-badge.bus {
+            background-color: #28a745; /* Zelená pro autobusy */
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        footer {
+            background-color: var(--dark-bg);
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.8rem; }
+            nav a { display: block; margin: 5px 0; }
         }
     </style>
 </head>
 <body>
 
-    <div class="game-container">
-        <h1>Židenická MHD hra</h1>
-        <div class="subtitle">Otestuj svoje znalosti brněnské dopravy v Židenicích!</div>
+    <header>
+        <h1>MHD Brno - Židenice</h1>
+        <p>Přehledový průvodce dopravními uzly, linkami a spoji v městské části Židenice</p>
+    </header>
 
-        <div id="game-board">
-            <div class="question-box" id="question">Jaká tramvajová linka je hlavní páteřní trasou přes Starou osadu v Židenicích?</div>
-            
-            <div class="options-container">
-                <button class="btn-option" onclick="checkAnswer(1)">Linka č. 1</button>
-                <button class="btn-option" onclick="checkAnswer(2)">Linka č. 2 a 3</button>
-                <button class="btn-option" onclick="checkAnswer(3)">Linka č. 8</button>
+    <nav>
+        <a href="#uzly">Dopravní uzly</a>
+        <a href="#linky">Přehled linek</a>
+        <a href="#zajimavosti">O čtvrti</a>
+    </nav>
+
+    <div class="container">
+        
+        <!-- Sekce Uzly -->
+        <section id="uzly">
+            <h2>Klíčové přestupní uzly v Židenicích</h2>
+            <div class="grid">
+                <div class="card red-border">
+                    <h3>Stará osada</h3>
+                    <p>Jeden z nejvýznamnějších a nejrušnějších dopravních uzlů v Brně. Kříží se zde tramvajová, trolejbusová i autobusová doprava.</p>
+                    <ul>
+                        <li><strong>Tramvaje:</strong> 2, 3</li>
+                        <li><strong>Trolejbusy:</strong> 25, 26, 27</li>
+                        <li><strong>Autobusy:</strong> Vybrané regionální a městské linky</li>
+                    </ul>
+                </div>
+
+                <div class="card red-border">
+                    <h3>Židenice, nádraží</h3>
+                    <p>Důležitý přestupní terminál propojující vlakovou dopravu (S-linky IDS JMK) s městskou hromadnou dopravou.</p>
+                    <ul>
+                        <li><strong>Vlaky:</strong> Rychlíky a osobní vlaky (S2, S3 atd.)</li>
+                        <li><strong>Autobusy MHD:</strong> 55, 58, 64, 78, E75, 201, 202</li>
+                        <li><strong>Pěší dostupnost:</strong> Zastávka tramvají/autobusů Kuldova</li>
+                    </ul>
+                </div>
             </div>
+        </section>
 
-            <div id="result"></div>
-        </div>
+        <!-- Sekce Linky -->
+        <section id="linky">
+            <h2>Dopravní prostředky a linky v oblasti</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Tramvaje</h3>
+                    <p>Páteřní spojení s centrem města zajišťují prověřené tramvajové linky:</p>
+                    <div>
+                        <span class="line-badge">2</span> Židenice, Stará osada – Hlavní nádraží – Modřice
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <span class="line-badge">3</span> Židenice, Stará osada – Česká – Starý Lískovec
+                    </div>
+                </div>
 
-        <div class="score">Skóre: <span id="score-val">0</span></div>
-    </div>
+                <div class="card">
+                    <h3>Trolejbusy</h3>
+                    <p>Zásadní radiální obsluha propojující Židenice s Vinohrady, Husovicemi a západem města:</p>
+                    <div>
+                        <span class="line-badge trol">25</span> Novolíšeňská – Stará osada – Kampus
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <span class="line-badge trol">26</span> Novolíšeňská – Stará osada – Kameňák
+                    </div>
+                    <div style="margin-top: 8px;">
+                        <span class="line-badge trol">27</span> Stará osada – Vinohrady, Pálavské nám.
+                    </div>
+                </div>
 
-    <script>
-        // Jednoduchá JavaScriptová logika pro interaktivitu hry
-        let score = 0;
+                <div class="card">
+                    <h3>Autobusy</h3>
+                    <p>Zajišťují obsluhu rezidenčních čtvrtí, sídlišť a návaznost na železnici:</p>
+                    <div>
+                        <span class="line-badge bus">55</span> <span class="line-badge bus">58</span> <span class="line-badge bus">64</span> <span class="line-badge bus">78</span>
+                    </div>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 10px;">Propojují Židenice s Juliánovem, Slatinou, Vinohrady a Líšní.</p>
+                </div>
+            </div>
+        </section>
 
-        function checkAnswer(option) {
-            const resultDiv = document.getElementById('result');
-            const scoreVal = document.getElementById('score-val');
+        <!-- Sekce O čtvrti -->
+        <section id="zajimavosti">
+            <h2>O brněnských Židenicích</h2>
+            <div class="card">
+                <p>Židenice jsou rozsáhlá městská část na východě Brna, která se skládá z historických čtvrtí Židenice, Juliánov a části Vinohrad. Vyznačují se hustou síťovou obsluhou DPMB (Dopravní podnik města Brna) a skvělou dostupností jak do historického centra, tak do průmyslových a rezidentních zón.</p>
+            </div>
+        </section>
 
-            // Správná odpověď je linka č. 2 a 3 (přes Starou osadu jezdí např. trolejbusy a šalinou 2, 3...)
-            // Pro účely ukázky nastavíme správnou volbu jako 2
-            if (option === 2) {
-                resultDiv.style.color = 'green';
-                resultDiv.textContent = 'Správně! Pokračuješ dál přes Židenice.';
-                score += 10;
-                scoreVal.textContent = score;
-                
-                // Zde můžeš po čase doplnit další otázky
-                setTimeout(() => {
-                    resultDiv.textContent = 'Gratulace, zvítězil jsi v židenickém bludišti MHD!';
-                }, 1500);
-            } else {
-                resultDiv.style.color = 'red';
-                resultDiv.textContent = 'Chyba! Zkus to znovu, tahle linka tudy nevede.';
-            }
-        }
-    </script>
+</div>
+
+    <footer>
+        <p>&copy; 2026 Neoficiální informační web MHD Brno-Židenice | Data inspirativně dle DPMB a IDS JMK</p>
+    </footer>
 
 </body>
 </html>
