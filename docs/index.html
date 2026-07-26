@@ -1,46 +1,141 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brněnská MHD výzva: Židenická trať</title>
+    <style>
+        /* CSS Styly */
+        :root {
+            --primary-color: #d21c1c; /* Červená typická pro brněnskou MHD / tramvaje */
+            --secondary-color: #ffffff;
+            --bg-color: #f4f4f9;
+            --text-color: #333333;
+        }
 
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-  <link rel="stylesheet" href="style.css">
+        .game-container {
+            background-color: var(--secondary-color);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            width: 100%;
+            text-align: center;
+        }
 
-  <link rel="icon" type="image/png" href="../Stop_Ico.png">
+        h1 {
+            color: var(--primary-color);
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
 
-  <meta charset="UTF-8">
-  <title>Live Mapa</title>
+        .subtitle {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 25px;
+        }
 
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      overflow: hidden;
-    }
+        .question-box {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
 
-    #map {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-    }
-  </style>
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .btn-option {
+            background-color: #fff;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .btn-option:hover {
+            background-color: var(--primary-color);
+            color: #fff;
+        }
+
+        #result {
+            font-weight: bold;
+            margin-top: 15px;
+            min-height: 24px;
+        }
+
+        .score {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
 </head>
-
 <body>
 
-<div id="map"></div>
+    <div class="game-container">
+        <h1>Židenická MHD hra</h1>
+        <div class="subtitle">Otestuj svoje znalosti brněnské dopravy v Židenicích!</div>
 
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <div id="game-board">
+            <div class="question-box" id="question">Jaká tramvajová linka je hlavní páteřní trasou přes Starou osadu v Židenicích?</div>
+            
+            <div class="options-container">
+                <button class="btn-option" onclick="checkAnswer(1)">Linka č. 1</button>
+                <button class="btn-option" onclick="checkAnswer(2)">Linka č. 2 a 3</button>
+                <button class="btn-option" onclick="checkAnswer(3)">Linka č. 8</button>
+            </div>
 
-<script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
+            <div id="result"></div>
+        </div>
 
-<script src="config.js"></script>
-<script src="map.js"></script>
+        <div class="score">Skóre: <span id="score-val">0</span></div>
+    </div>
+
+    <script>
+        // Jednoduchá JavaScriptová logika pro interaktivitu hry
+        let score = 0;
+
+        function checkAnswer(option) {
+            const resultDiv = document.getElementById('result');
+            const scoreVal = document.getElementById('score-val');
+
+            // Správná odpověď je linka č. 2 a 3 (přes Starou osadu jezdí např. trolejbusy a šalinou 2, 3...)
+            // Pro účely ukázky nastavíme správnou volbu jako 2
+            if (option === 2) {
+                resultDiv.style.color = 'green';
+                resultDiv.textContent = 'Správně! Pokračuješ dál přes Židenice.';
+                score += 10;
+                scoreVal.textContent = score;
+                
+                // Zde můžeš po čase doplnit další otázky
+                setTimeout(() => {
+                    resultDiv.textContent = 'Gratulace, zvítězil jsi v židenickém bludišti MHD!';
+                }, 1500);
+            } else {
+                resultDiv.style.color = 'red';
+                resultDiv.textContent = 'Chyba! Zkus to znovu, tahle linka tudy nevede.';
+            }
+        }
+    </script>
 
 </body>
 </html>
