@@ -46,7 +46,7 @@ function createLineMarker(lineNumber, color) {
 }
 
 marker = L.marker(CONFIG.map.center, {
-    icon: createLineMarker(76, "#0000D5")
+    icon: createLineMarker(75, "#0000D5")
 }).addTo(map);
 
 // =====================
