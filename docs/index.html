@@ -1,18 +1,128 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
-    <charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brno - Židenice | Main Page</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dopravní podnik města Brna</title>
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-    <header>
-        <h1>MHD Brno - Židenice</h1>
-        <p>Hlavní stránka hry Brno Židenice</p>
-    </header>
+  <!-- Hlavní sekce (Hero) s logem a tlačítky -->
+  <main class="hero-section">
+    <div class="hero-content">
+      <img src="https://www.dpmb.cz/themes/custom/dpmb/logo.svg" alt="DPMB Logo" class="hero-logo">
+      <div class="hero-buttons">
+        <a href="#jizdne" class="hero-btn primary-btn">Jízdné v Brně</a>
+        <a href="#aktuality" class="hero-btn secondary-btn">Aktuality</a>
+      </div>
+    </div>
+  </main>
 
-<p>Bum bum bum, kuky je tady v room, jmenuje se kuky a má rád malé kluky</p>
+  <!-- Oficiální sekce DPMB s červeným pozadím a srdíčkem -->
+  <div class="paragraph--type--blok">
+    <div class="jezdimeprovas">
+      <p>Jezdíme pro vás</p>
+    </div>
+  </div>
+
+  <!-- 1. SEKCE: JÍZNÉ V BRNĚ -->
+  <section id="jizdne" class="tickets-section">
+    <div class="section-container">
+      <h2 class="section-title">Jízdné v Brně<br>rychle a přehledně</h2>
+
+      <div class="tickets-grid">
+        <div class="ticket-card card-fleet">
+          <h3><span>Vozový park</span></h3>
+        </div>
+        <div class="ticket-card card-pipni">
+          <h3><span>text</span></h3>
+        </div>
+
+        <div class="ticket-card card-sms">
+          <h3><span>text</span></h3>
+        </div>
+        <div class="ticket-card card-odb">
+          <h3><span>Odbavovací systém</span></h3>
+        </div>
+
+        <!-- Změněno z div na odkaz (a) s atributem href -->
+        <a href="https://mapa.brno-roblox.cz" target="_blank" class="ticket-card card-app"
+          style="text-decoration: none;">
+          <h3><span>Mapa vozidel DPMB Židenice</span></h3>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SEKCE: ZÁŽITKY S DPMB -->
+  <section class="experience-section">
+    <div class="experience-box">
+      <h2 class="red-heading">Brno Židenice</h2>
+      <p>Nevim neco o Brno Židenicich. Btw kuky je gay jo a ma rad male kluky (bum bum bum kuky je tady v room ,jmenuje
+        se kuky a má rád malé kluky)</p>
+      <a href="#" class="outline-btn">Za (Ne)zážitky s DPMB &rarr;</a>
+    </div>
+  </section>
+
+  <!-- 3. SEKCE: AKTUALITY -->
+  <section id="aktuality" class="news-section">
+    <div class="section-container">
+      <h2 class="section-title">Aktuality</h2>
+      <div class="news-grid">
+        <!-- Karta 1 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=600&q=80"
+            alt="Dílny DPMB">
+          <h3>V dílnách zkompletujeme dalších 60 tramvají Drak</h3>
+          <p>V ústředních dílnách DPMB začala kompletace dalších tramvají Drak z druhé etapy projektu Tramvaj pro Brno.
+            Zaměstnanci aktuálně pracují na prvních dvou...</p>
+        </div>
+        <!-- Karta 2 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1517735955605-24205c87e416?auto=format&fit=crop&w=600&q=80"
+            alt="Historická tramvaj">
+          <h3>Oblíbená historická linka H4 oživí centrum Brna</h3>
+          <p>Od 4. července 2026 se do ulic opět vrací oblíbená historická linka H4. Po roce tak znovu oživí centrum
+            Brna a nabídne fanouškům MHD atmosféru dobového...</p>
+        </div>
+        <!-- Karta 3 -->
+        <div class="news-card">
+          <img src="https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&w=600&q=80"
+            alt="Nová tramvaj 45T">
+          <h3>Brnem projede rekordní konvoj 40 tramvají 45T</h3>
+          <p>40 šalin. 1 konvoj. 0 důvodů, proč to nezkusit. Někdo sbírá pokémony. My šaliny. A protože jich máme už 40,
+            napadlo nás, že by byla škoda je nepostavit do...</p>
+        </div>
+      </div>
+      <div class="section-button-container">
+        <a href="#" class="outline-btn">Další články &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- OFICIÁLNÍ ČERVENÁ PATIČKA (FOOTER) -->
+  <footer class="dpmb-footer">
+    <div class="footer-container">
+      <div class="footer-main-row">
+        <div class="footer-center-group">
+          <div class="footer-logo-box">
+            <img src="https://www.dpmb.cz/themes/custom/dpmb/logo.svg" alt="DPMB Logo">
+          </div>
+          <div class="footer-slogan-box">
+            <img src="https://www.dpmb.cz/themes/custom/dpmb/images/srdicko-dpmb.svg" alt="Srdíčko DPMB"
+              class="footer-heart">
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom-row">
+        <p>&copy; 2026 Dopravní podnik města Brna, a. s.</p>
+      </div>
+    </div>
+  </footer>
 
 </body>
+
 </html>
